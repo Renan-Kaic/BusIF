@@ -20,181 +20,6 @@ import { router } from 'expo-router'
 
 import { Colors } from '@/constants/Colors'
 
-type ActiveTicket = {
-    id: string
-    qrCode: string
-    expiresAt: Date
-    createdAt: Date
-}
-
-const TICKET_DURATION_MS = 90 * 60 * 1000
-
-const createStyles = (theme: typeof Colors.light | typeof Colors.dark) =>
-    StyleSheet.create({
-        container: {
-            flex: 1,
-            backgroundColor: theme.background,
-        },
-        header: {
-            paddingHorizontal: 20,
-            paddingTop: 20,
-            paddingBottom: 15,
-        },
-        title: {
-            fontFamily: 'Poppins-SemiBold',
-            fontSize: 30,
-            color: theme.text,
-        },
-        subtitle: {
-            fontFamily: 'Inter-Regular',
-            fontSize: 16,
-            color: theme.textSecondary,
-            marginTop: 2,
-        },
-        contentScrollView: {
-            flexGrow: 1,
-        },
-        contentContainer: {
-            flexGrow: 1,
-            justifyContent: 'space-between',
-            padding: 20,
-            paddingTop: 10,
-        },
-        topSection: {
-            flex: 1,
-            justifyContent: 'center',
-            marginBottom: 30,
-        },
-        activeTicketContainer: {
-            backgroundColor: theme.card,
-            borderRadius: 20,
-            padding: 24,
-            alignItems: 'center',
-            shadowColor: theme.shadow,
-            shadowOffset: { width: 0, height: 4 },
-            shadowOpacity: theme === Colors.light ? 0.08 : 0.1,
-            shadowRadius: 12,
-            elevation: theme === Colors.light ? 5 : 2,
-            borderWidth: theme === Colors.light ? 1 : 0,
-            borderColor: theme.iconBackground,
-        },
-        progressSection: {
-            width: '100%',
-            alignItems: 'center',
-            marginBottom: 24,
-        },
-        progressInfo: {
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            width: '100%',
-            marginBottom: 12,
-        },
-        progressTimeContainer: {
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 6,
-        },
-        progressTimeText: {
-            fontFamily: 'Poppins-Medium',
-            fontSize: 16,
-            color: theme.text,
-        },
-        progressLabel: {
-            fontFamily: 'Inter-Regular',
-            fontSize: 14,
-            color: theme.textSecondary,
-        },
-        progressBarTrack: {
-            width: '100%',
-            height: 8,
-            backgroundColor: theme.iconBackground,
-            borderRadius: 4,
-            overflow: 'hidden',
-        },
-        progressBarFill: {
-            height: '100%',
-            backgroundColor: theme.tint,
-            borderRadius: 4,
-        },
-        qrContainer: {
-            padding: 16,
-            backgroundColor: '#ffffff',
-            borderRadius: 16,
-            shadowColor: Colors.light.shadow,
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.1,
-            shadowRadius: 5,
-            elevation: 3,
-            marginTop: 10,
-        },
-        ticketId: {
-            fontFamily: 'Inter-Regular',
-            fontSize: 13,
-            color: theme.textSecondary,
-            marginTop: 20,
-        },
-        placeholderContainer: {
-            flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: 20,
-            paddingBottom: 50,
-        },
-        placeholderTitle: {
-            fontFamily: 'Poppins-Medium',
-            fontSize: 18,
-            color: theme.textSecondary,
-            textAlign: 'center',
-        },
-        placeholderText: {
-            fontFamily: 'Inter-Regular',
-            fontSize: 16,
-            color: theme.textSecondary,
-            textAlign: 'center',
-            maxWidth: 280,
-            lineHeight: 22,
-        },
-        buttonContainer: {
-            gap: 14,
-            paddingTop: 10,
-        },
-        button: {
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: 58,
-            borderRadius: 16,
-            gap: 12,
-        },
-        primaryButton: {
-            backgroundColor: theme.tint,
-        },
-        primaryButtonText: {
-            fontFamily: 'Inter-SemiBold',
-            fontSize: 16,
-            color:
-                theme === Colors.light
-                    ? Colors.light.card
-                    : Colors.dark.background,
-        },
-        secondaryButton: {
-            backgroundColor: theme.iconBackground,
-        },
-        secondaryButtonText: {
-            fontFamily: 'Inter-SemiBold',
-            fontSize: 16,
-            color: theme.text,
-        },
-        disabledButton: {
-            backgroundColor: theme.iconBackground,
-            opacity: 0.7,
-        },
-        disabledButtonText: {
-            color: theme.textSecondary,
-        },
-    })
-
 export default function TicketsScreen() {
     const colorScheme = useColorScheme()
     const themeColors = Colors[colorScheme ?? 'light']
@@ -405,3 +230,178 @@ export default function TicketsScreen() {
         </SafeAreaView>
     )
 }
+
+const createStyles = (theme: typeof Colors.light | typeof Colors.dark) =>
+    StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: theme.background,
+        },
+        header: {
+            paddingHorizontal: 20,
+            paddingTop: 20,
+            paddingBottom: 15,
+        },
+        title: {
+            fontFamily: 'Poppins-SemiBold',
+            fontSize: 30,
+            color: theme.text,
+        },
+        subtitle: {
+            fontFamily: 'Inter-Regular',
+            fontSize: 16,
+            color: theme.textSecondary,
+            marginTop: 2,
+        },
+        contentScrollView: {
+            flexGrow: 1,
+        },
+        contentContainer: {
+            flexGrow: 1,
+            justifyContent: 'space-between',
+            padding: 20,
+            paddingTop: 10,
+        },
+        topSection: {
+            flex: 1,
+            justifyContent: 'center',
+            marginBottom: 30,
+        },
+        activeTicketContainer: {
+            backgroundColor: theme.card,
+            borderRadius: 20,
+            padding: 24,
+            alignItems: 'center',
+            shadowColor: theme.shadow,
+            shadowOffset: { width: 0, height: 4 },
+            shadowOpacity: theme === Colors.light ? 0.08 : 0.1,
+            shadowRadius: 12,
+            elevation: theme === Colors.light ? 5 : 2,
+            borderWidth: theme === Colors.light ? 1 : 0,
+            borderColor: theme.iconBackground,
+        },
+        progressSection: {
+            width: '100%',
+            alignItems: 'center',
+            marginBottom: 24,
+        },
+        progressInfo: {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '100%',
+            marginBottom: 12,
+        },
+        progressTimeContainer: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            gap: 6,
+        },
+        progressTimeText: {
+            fontFamily: 'Poppins-Medium',
+            fontSize: 16,
+            color: theme.text,
+        },
+        progressLabel: {
+            fontFamily: 'Inter-Regular',
+            fontSize: 14,
+            color: theme.textSecondary,
+        },
+        progressBarTrack: {
+            width: '100%',
+            height: 8,
+            backgroundColor: theme.iconBackground,
+            borderRadius: 4,
+            overflow: 'hidden',
+        },
+        progressBarFill: {
+            height: '100%',
+            backgroundColor: theme.tint,
+            borderRadius: 4,
+        },
+        qrContainer: {
+            padding: 16,
+            backgroundColor: '#ffffff',
+            borderRadius: 16,
+            shadowColor: Colors.light.shadow,
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 5,
+            elevation: 3,
+            marginTop: 10,
+        },
+        ticketId: {
+            fontFamily: 'Inter-Regular',
+            fontSize: 13,
+            color: theme.textSecondary,
+            marginTop: 20,
+        },
+        placeholderContainer: {
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 20,
+            paddingBottom: 50,
+        },
+        placeholderTitle: {
+            fontFamily: 'Poppins-Medium',
+            fontSize: 18,
+            color: theme.textSecondary,
+            textAlign: 'center',
+        },
+        placeholderText: {
+            fontFamily: 'Inter-Regular',
+            fontSize: 16,
+            color: theme.textSecondary,
+            textAlign: 'center',
+            maxWidth: 280,
+            lineHeight: 22,
+        },
+        buttonContainer: {
+            gap: 14,
+            paddingTop: 10,
+        },
+        button: {
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: 58,
+            borderRadius: 16,
+            gap: 12,
+        },
+        primaryButton: {
+            backgroundColor: theme.tint,
+        },
+        primaryButtonText: {
+            fontFamily: 'Inter-SemiBold',
+            fontSize: 16,
+            color:
+                theme === Colors.light
+                    ? Colors.light.card
+                    : Colors.dark.background,
+        },
+        secondaryButton: {
+            backgroundColor: theme.iconBackground,
+        },
+        secondaryButtonText: {
+            fontFamily: 'Inter-SemiBold',
+            fontSize: 16,
+            color: theme.text,
+        },
+        disabledButton: {
+            backgroundColor: theme.iconBackground,
+            opacity: 0.7,
+        },
+        disabledButtonText: {
+            color: theme.textSecondary,
+        },
+    })
+    
+type ActiveTicket = {
+    id: string
+    qrCode: string
+    expiresAt: Date
+    createdAt: Date
+}
+
+const TICKET_DURATION_MS = 90 * 60 * 1000

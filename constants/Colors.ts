@@ -19,29 +19,37 @@ const slate = {
 
 export const Colors = {
     light: {
-        text: slate[900], // Texto principal (quase preto)
-        textSecondary: slate[500], // Texto secundário (cinza médio)
-        background: slate[50], // Fundo da tela (cinza muito claro)
-        card: slate.white, // Fundo de cards/itens (branco)
-        tint: slate[900], // Cor de destaque/seleção (igual ao texto primário)
-        icon: slate[500], // Ícone padrão (cinza médio)
-        iconBackground: slate[100], // Fundo para container de ícone (cinza claro)
-        tabIconDefault: slate[500], // Ícone de tab não selecionado
-        tabIconSelected: slate[900], // Ícone de tab selecionado (igual ao tint)
-        negative: slate[900], // Cor para valores negativos (igual ao texto primário)
-        shadow: slate.black, // Cor da sombra
+        text: slate[900],
+        textSecondary: slate[500],
+        background: slate[50],
+        card: slate.white,
+        tint: slate[900],
+        icon: slate[500],
+        iconBackground: slate[100],
+        tabIconDefault: slate[500],
+        tabIconSelected: slate[900],
+        negative: slate[900],
+        shadow: slate.black,
+        error: 'red',
+        errorBackground: slate[50],
+        errorBorder: slate[900],
+        errorContainerBorder: '#ff3b3b20',
     },
     dark: {
-        text: slate[200], // Texto principal (cinza muito claro)
-        textSecondary: slate[400], // Texto secundário (cinza claro)
-        background: slate[950], // Fundo da tela (quase preto)
-        card: slate[900], // Fundo de cards/itens (cinza bem escuro)
-        tint: slate.white, // Cor de destaque/seleção (branco)
-        icon: slate[400], // Ícone padrão (cinza claro)
-        iconBackground: slate[800], // Fundo para container de ícone (cinza escuro)
-        tabIconDefault: slate[400], // Ícone de tab não selecionado
-        tabIconSelected: slate.white, // Ícone de tab selecionado (igual ao tint)
-        negative: slate[200], // Cor para valores negativos (igual ao texto primário dark)
-        shadow: slate.black, // Cor da sombra (menos relevante no dark mode)
+        text: slate[200],
+        textSecondary: slate[400],
+        background: slate[950],
+        card: slate[900],
+        tint: slate.white,
+        icon: slate[400],
+        iconBackground: slate[800],
+        tabIconDefault: slate[400],
+        tabIconSelected: slate.white,
+        negative: slate[200],
+        shadow: slate.black,
+        error: 'red',
+        errorBackground: slate[900],
+        errorBorder: slate[200],
+        errorContainerBorder: '#ff3b3b20',
     },
 }

@@ -19,9 +19,11 @@ import {
     Bell,
     Lock,
     Globe,
+    Wifi,
 } from 'lucide-react-native'
 
 import { Colors } from '@/constants/Colors'
+import { DisableNetwork } from '@/config/firebase'
 
 export default function ProfileScreen() {
     const colorScheme = useColorScheme()
@@ -32,6 +34,8 @@ export default function ProfileScreen() {
     const [darkModeEnabled, setDarkModeEnabled] = useState(
         colorScheme === 'dark',
     )
+
+    const [offline, setOffline] = useState(false)
 
     useEffect(() => {
         setDarkModeEnabled(colorScheme === 'dark')
@@ -45,6 +49,14 @@ export default function ProfileScreen() {
         setDarkModeEnabled(value)
         console.log('Trocar para modo escuro:', value)
     }
+
+    const toggleNetworkStatus = () => {
+        setOffline(!offline)
+    }
+
+    useEffect(() =>{
+      DisableNetwork(offline)
+    }, [offline])
 
     return (
         <SafeAreaView style={styles.container}>
@@ -88,7 +100,7 @@ export default function ProfileScreen() {
                                 false: themeColors.iconBackground,
                                 true: themeColors.tint,
                             }}
-                            thumbColor={themeColors.card} // Garante que o thumb seja visível
+                            thumbColor={themeColors.card}
                         />
                     </View>
 
@@ -99,7 +111,7 @@ export default function ProfileScreen() {
                         </View>
                         <Switch
                             value={darkModeEnabled}
-                            onValueChange={toggleDarkMode} // Chamar função que deveria trocar o tema global
+                            onValueChange={toggleDarkMode}
                             trackColor={{
                                 false: themeColors.iconBackground,
                                 true: themeColors.tint,
@@ -107,7 +119,21 @@ export default function ProfileScreen() {
                             thumbColor={themeColors.card}
                         />
                     </View>
-
+                    <View style={styles.settingItem}>
+                        <View style={styles.settingLeft}>
+                            <Wifi size={24} color={themeColors.textSecondary} />
+                            <Text style={styles.settingText}>Modo Offline</Text>
+                        </View>
+                        <Switch
+                            value={offline}
+                            onValueChange={toggleNetworkStatus}
+                            trackColor={{
+                                false: themeColors.iconBackground,
+                                true: themeColors.tint,
+                            }}
+                            thumbColor={themeColors.card}
+                        />
+                    </View>
                     <TouchableOpacity style={styles.settingItem}>
                         <View style={styles.settingLeft}>
                             <Lock size={24} color={themeColors.textSecondary} />

@@ -62,7 +62,8 @@ export default function HomeScreen() {
                             <Text style={styles.topUpText}>Recarregar</Text>
                         </TouchableOpacity>
                     </View>
-                    <Text style={styles.balanceAmount}>R$ 25,50</Text>
+                    <Text style={styles.balanceAmount}>R$ 47,50
+                    </Text>
                     <View style={styles.balanceInfo}>
                         <View style={styles.infoItem}>
                             <Clock
@@ -70,7 +71,7 @@ export default function HomeScreen() {
                                 color={themeColors.textSecondary}
                             />
                             <Text style={styles.infoText}>
-                                Última recarga: 2 dias atrás
+                                Última recarga: Ontem, 14:15
                             </Text>
                         </View>
                     </View>
@@ -84,7 +85,7 @@ export default function HomeScreen() {
                     <TouchableOpacity
                         style={styles.actionButton}
                         onPress={() => {
-                            router.replace('/tickets')
+                            router.replace('/login')
                         }}
                     >
                         <View style={styles.actionIcon}>
@@ -130,7 +131,7 @@ export default function HomeScreen() {
                             title: 'Viagem de Ônibus',
                             subtitle: 'Linha 123 - Centro',
                             time: 'Hoje, 9:30',
-                            amount: '-R$ 4,50',
+                            amount: '-R$ 2,50',
                             isNegative: true,
                         },
                         {
@@ -148,7 +149,7 @@ export default function HomeScreen() {
                             title: 'Viagem de Ônibus',
                             subtitle: 'Linha 456 - Universidade',
                             time: 'Ontem, 8:45',
-                            amount: '-R$ 4,50',
+                            amount: '-R$ 2,50',
                             isNegative: true,
                         },
                     ].map((item) => (
